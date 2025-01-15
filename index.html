@@ -3,60 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Современный GitHub</title>
+    <title>Портфолио разработчика</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
-<body>
+<body data-theme="light">
+    <!-- Прелоадер -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Частицы фона -->
+    <div id="particles-js"></div>
+
+    <!-- Шапка -->
     <header>
         <nav>
-            <div class="logo">
-                <i class="fab fa-github"></i>
-                <span>GitPortfolio</span>
+            <div class="logo" data-aos="fade-right">
+                <i class="fas fa-code"></i>
+                <span>Portfolio</span>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" data-aos="fade-down">
                 <li><a href="#home" class="active">Главная</a></li>
+                <li><a href="#about">Обо мне</a></li>
                 <li><a href="#projects">Проекты</a></li>
                 <li><a href="#skills">Навыки</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
-            <div class="theme-toggle">
+            <button class="theme-toggle" data-aos="fade-left">
                 <i class="fas fa-moon"></i>
-            </div>
+                <i class="fas fa-sun"></i>
+            </button>
         </nav>
     </header>
 
     <main>
+        <!-- Главная секция -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text" data-aos="fade-right">
                     <span class="greeting">Привет, я</span>
-                    <h1>Иван Иванов</h1>
-                    <div class="typing-text">
-                        Я <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+                    <h1 class="glitch" data-text="Иван Иванов">Иван Иванов</h1>
+                    <div class="typing-container">
+                        <span class="typed-text"></span>
+                        <span class="cursor">&nbsp;</span>
                     </div>
                     <p class="hero-description">
                         Создаю современные веб-приложения, 
                         которые помогают бизнесу расти
                     </p>
                     <div class="hero-buttons">
-                        <button class="cta-button primary">
+                        <button class="cta-button primary" data-aos="fade-up" data-aos-delay="200">
                             <i class="fas fa-paper-plane"></i>
                             Связаться со мной
                         </button>
-                        <button class="cta-button secondary">
+                        <button class="cta-button secondary" data-aos="fade-up" data-aos-delay="400">
                             <i class="fas fa-download"></i>
                             Скачать резюме
                         </button>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/13102.png" alt="Профиль">
-                    <div class="experience-card">
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="your-photo.jpg" alt="Профиль">
+                    <div class="experience-card" data-aos="fade-up">
                         <span class="number">3+</span>
                         <span class="text">года опыта</span>
                     </div>
-                    <div class="projects-card">
+                    <div class="projects-card" data-aos="fade-up">
                         <span class="number">50+</span>
                         <span class="text">проектов</span>
                     </div>
@@ -64,90 +80,125 @@
             </div>
         </section>
 
+        <!-- Секция проектов -->
         <section id="projects" class="projects">
-            <h2>Мои проекты</h2>
+            <h2 data-aos="fade-up">Мои проекты</h2>
+            <div class="project-filters" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="web">Веб</button>
+                <button class="filter-btn" data-filter="mobile">Мобильные</button>
+                <button class="filter-btn" data-filter="design">Дизайн</button>
+            </div>
             <div class="project-grid">
-                <div class="project-card">
-                    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/20506.jpg" alt="Проект 1">
+                <!-- Проект 1 -->
+                <div class="project-card" data-aos="fade-up" data-category="web"
+                     data-gallery="project1-1.jpg,project1-2.jpg"
+                     data-description="Описание проекта"
+                     data-demo="https://demo.com"
+                     data-github="https://github.com">
+                    <div class="project-image">
+                        <img src="project1.jpg" alt="Проект 1">
+                    </div>
                     <div class="project-info">
                         <h3>Проект 1</h3>
-                        <p>Подробное описание проекта</p>
                         <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
                         </div>
-                        <a href="#" class="project-link">Посмотреть проект</a>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="https://4kwallpapers.com/images/walls/thumbs_3t/20436.jpg" alt="Проект 2">
-                    <div class="project-info">
-                        <h3>Проект 2</h3>
-                        <p>Подробное описание проекта</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <a href="#" class="project-link">Посмотреть проект</a>
-                    </div>
-                </div>
+                <!-- Добавьте больше проектов по аналогии -->
             </div>
         </section>
 
+        <!-- Секция навыков -->
         <section id="skills" class="skills">
-            <h2>Мои навыки</h2>
+            <h2 data-aos="fade-up">Мои навыки</h2>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML5</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
+                <!-- Навык 1 -->
+                <div class="skill-card" data-aos="fade-up">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
                     </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS3</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
+                    <h3>React</h3>
+                    <div class="skill-level">
+                        <div class="progress-bar">
+                            <div class="progress" data-progress="85%"></div>
+                        </div>
+                        <span class="percentage">85%</span>
                     </div>
+                    <ul class="skill-details">
+                        <li>Redux</li>
+                        <li>Hooks</li>
+                        <li>Context API</li>
+                    </ul>
                 </div>
-                <div class="skill-card">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 80%"></div>
-                    </div>
-                </div>
+                <!-- Добавьте больше навыков по аналогии -->
             </div>
         </section>
 
+        <!-- Секция контактов -->
         <section id="contact" class="contact">
-            <h2>Свяжитесь со мной</h2>
-            <form id="contact-form">
-                <div class="form-group">
-                    <input type="text" id="name" required placeholder="Ваше имя">
+            <h2 data-aos="fade-up">Свяжитесь со мной</h2>
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>email@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (999) 123-45-67</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, Россия</span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" id="email" required placeholder="Ваш email">
-                </div>
-                <div class="form-group">
-                    <textarea id="message" required placeholder="Ваше сообщение"></textarea>
-                </div>
-                <button type="submit">Отправить</button>
-            </form>
+                <form id="contact-form" data-aos="fade-left">
+                    <div class="form-group">
+                        <input type="text" id="name" required placeholder="Ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required placeholder="Ваш email">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" required placeholder="Ваше сообщение"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Отправить
+                    </button>
+                </form>
+            </div>
         </section>
     </main>
 
+    <!-- Подвал -->
     <footer>
         <div class="footer-content">
             <div class="social-links">
-                <a href="https://github.com/Mr-X-01"><i class="fab fa-github"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
-            <p>&copy; 2025 Mr-X-01. Все права защищены.</p>
+            <p>&copy; 2024 Все права защищены</p>
         </div>
     </footer>
+
+    <!-- Плавающая навигация -->
+    <div class="floating-nav">
+        <a href="#home" class="nav-dot active" data-section="home"><span>Главная</span></a>
+        <a href="#projects" class="nav-dot" data-section="projects"><span>Проекты</span></a>
+        <a href="#skills" class="nav-dot" data-section="skills"><span>Навыки</span></a>
+        <a href="#contact" class="nav-dot" data-section="contact"><span>Контакты</span></a>
+    </div>
+
+    <!-- Кнопка "наверх" -->
+    <button class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="./index.js"></script>
 </body>
