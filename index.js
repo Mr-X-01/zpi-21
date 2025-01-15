@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Плавная прокрутка
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            }
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
 
@@ -34,40 +31,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Переключатель темы
     const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.setAttribute('data-theme',
-            document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-        );
-        themeToggle.querySelector('i').classList.toggle('fa-sun');
-        themeToggle.querySelector('i').classList.toggle('fa-moon');
-    });
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-    // Анимация прогресс-баров
+    function toggleTheme() {
+        document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', document.body.dataset.theme);
+    }
+
+    // Устанавливаем тему при загрузке
+    const savedTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+    document.body.dataset.theme = savedTheme;
+
+    themeToggle.addEventListener('click', toggleTheme);
+
+    // Анимация прогресс-баров при скролле
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
+                entry.target.style.width = entry.target.dataset.progress;
             }
         });
-    });
+    }, { threshold: 0.5 });
 
-    document.querySelectorAll('.progress-bar').forEach(bar => {
-        observer.observe(bar);
+    document.querySelectorAll('.progress').forEach(progress => {
+        observer.observe(progress);
     });
 
     // Обработка формы
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', (e) => {
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-        };
-        
+        const formData = new FormData(e.target);
         // Здесь можно добавить логику отправки формы
-        console.log('Form submitted:', formData);
         alert('Сообщение отправлено!');
-        contactForm.reset();
     });
 });
